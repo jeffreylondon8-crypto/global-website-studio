@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process | Global Website Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Process Page Specific Styles */
+        .process-hero {
+            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 20px 0;
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--neon), var(--matrix));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            margin: 0 40px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            border-color: var(--neon);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -50px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -50px;
+        }
+        
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--dark);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            z-index: 2;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-icon {
+            border-color: var(--neon);
+            color: var(--neon);
+        }
+        
+        .tech-stack-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-chip {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-chip:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+        
+        .process-diagram {
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .diagram-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .diagram-node {
+            background: rgba(0, 30, 50, 0.8);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .diagram-connector {
+            height: 50px;
+            width: 2px;
+            background: var(--primary);
+            margin: 0 auto;
+        }
+        
+        .diagram-arrow {
+            text-align: center;
+            margin: 10px 0;
+            color: var(--primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .toolkit-section {
+            background: rgba(0, 20, 40, 0.6);
+            border: 2px solid var(--matrix);
+            border-radius: 15px;
+            padding: 50px;
+            margin: 80px 0;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tool-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 30, 50, 0.4);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .qa-section {
+            margin: 80px 0;
+        }
+        
+        .qa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .qa-card {
+            background: rgba(0, 20, 30, 0.7);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .qa-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Binary Rain Effect -->
+    <div class="binary-rain" id="binaryRain"></div>
+    <div class="cyber-grid"></div>
+    
+    <!-- Header -->
+    <header class="neon-border">
+        <div class="container header-container">
+            <a href="index.html" class="logo terminal-text">Global<span class="matrix-text">Website</span>Studio</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-terminal"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="process.html" class="active">Process</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Process Hero -->
+    <section class="process-hero">
+        <div class="container">
+            <h1 class="glitch" data-text="DEVELOPMENT PROCESS">DEVELOPMENT PROCESS</h1>
+            <p class="terminal-text">// A systematic approach to turning ideas into functional, beautiful websites</p>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="container">
+        <div class="process-timeline">
+            <!-- Phase 1 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="step-number" style="background: var(--primary); color: white; display: inline-block; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px;">1</div>
+                    <h2 class="terminal-text">Discovery & Strategy</h2>
+                    <p>Understanding your business goals, target audience, and project requirements through detailed discussions and research.</p>
+                    <div class="tech-stack-display">
+                        <span class="tech-chip">Requirements Analysis</span>
+                        <span class="tech-chip">Market Research</span>
+                        <span class="tech-chip">User Personas</span>
+                        <span class="tech-chip">Competitor Analysis</span>
+                    </div>
+                    <div class="hacker-terminal" style="margin-top: 20px; font-size: 0.9rem;">
+                        <span class="terminal-text">> Initial client consultation completed</span><br>
+                        <span class="terminal-text">> Project scope defined</span><br>
+                        <span class="terminal-text">> Technical requirements documented</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-pencil-ruler"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="step-number" style="background: var(--neon); color: black; display: inline-block; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px;">2</div>
+                    <h2 class="terminal-text">Planning & Design</h2>
+                    <p>Creating wireframes, mockups, and prototypes to visualize the final product before any code is written.</p>
+                    <div class="tech-stack-display">
+                        <span class="tech-chip">Wireframing</span>
+                        <span class="tech-chip">UI/UX Design</span>
+                        <span class="tech-chip">Prototyping</span>
+                        <span class="tech-chip">Figma</span>
+                        <span class="tech-chip">Adobe XD</span>
+                    </div>
+                    <div class="hacker-terminal" style="margin-top: 20px; font-size: 0.9rem;">
+                        <span class="terminal-text">> Site architecture planned</span><br>
+                        <span class="terminal-text">> Wireframes approved</span><br>
+                        <span class="terminal-text">> Design mockups created</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 3 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="step-number" style="background: var(--matrix); color: black; display: inline-block; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px;">3</div>
+                    <h2 class="terminal-text">Development</h2>
+                    <p>Writing clean, efficient code to build the website with modern technologies and best practices.</p>
+                    <div class="tech-stack-display">
+                        <span class="tech-chip">HTML5</span>
+                        <span class="tech-chip">CSS3</span>
+                        <span class="tech-chip">JavaScript</span>
+                        <span class="tech-chip">React</span>
+                        <span class="tech-chip">Node.js</span>
+                        <span class="tech-chip">Git</span>
+                    </div>
+                    <div class="hacker-terminal" style="margin-top: 20px; font-size: 0.9rem;">
+                        <span class="terminal-text">> Frontend development started</span><br>
+                        <span class="terminal-text">> Backend integration complete</span><br>
+                        <span class="terminal-text">> Responsive design implemented</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 4 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-vial"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="step-number" style="background: #00ff9d; color: black; display: inline-block; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px;">4</div>
+                    <h2 class="terminal-text">Testing & Quality Assurance</h2>
+                    <p>Rigorous testing across devices, browsers, and scenarios to ensure flawless performance.</p>
+                    <div class="tech-stack-display">
+                        <span class="tech-chip">Unit Testing</span>
+                        <span class="tech-chip">Cross-browser</span>
+                        <span class="tech-chip">Performance</span>
+                        <span class="tech-chip">Security Scan</span>
+                        <span class="tech-chip">User Testing</span>
+                    </div>
+                    <div class="hacker-terminal" style="margin-top: 20px; font-size: 0.9rem;">
+                        <span class="terminal-text">> All tests passed successfully</span><br>
+                        <span class="terminal-text">> Performance optimized</span><br>
+                        <span class="terminal-text">> Security checks completed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 5 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="step-number" style="background: #ff0080; color: white; display: inline-block; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; margin-right: 10px;">5</div>
+                    <h2 class="terminal-text">Launch & Support</h2>
+                    <p>Deploying the website and providing ongoing maintenance, updates, and technical support.</p>
+                    <div class="tech-stack-display">
+                        <span class="tech-chip">Deployment</span>
+                        <span class="tech-chip">DNS Configuration</span>
+                        <span class="tech-chip">SSL Setup</span>
+                        <span class="tech-chip">Monitoring</span>
+                        <span class="tech-chip">Maintenance</span>
+                    </div>
+                    <div class="hacker-terminal" style="margin-top: 20px; font-size: 0.9rem;">
+                        <span class="terminal-text">> Website successfully launched</span><br>
+                        <span class="terminal-text">> Client training completed</span><br>
+                        <span class="terminal-text">> Support plan activated</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Toolkit -->
+    <section class="container">
+        <div class="toolkit-section">
+            <h2 class="terminal-text" style="text-align: center; margin-bottom: 30px;">> Development Toolkit</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Using industry-standard tools and technologies to deliver exceptional results</p>
+            
+            <div class="tool-grid">
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>Frontend</h3>
+                    <p>HTML5, CSS3, JavaScript, React, Vue.js, Bootstrap, Tailwind CSS</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend</h3>
+                    <p>Node.js, Express, Python, Django, PostgreSQL, MongoDB, REST APIs</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Tools</h3>
+                    <p>Git, GitHub, VS Code, Figma, Adobe Creative Cloud, Docker</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security</h3>
+                    <p>SSL/TLS, OWASP Guidelines, Security Headers, Regular Updates</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Performance</h3>
+                    <p>CDN, Image Optimization, Code Minification, Caching Strategies</p>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive</h3>
+                    <p>Mobile-First Design, Cross-browser Testing, PWA Capabilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance -->
+    <section class="container qa-section">
+        <h2 class="terminal-text" style="text-align: center; margin-bottom: 50px;">> Quality Assurance Process</h2>
+        
+        <div class="qa-grid">
+            <div class="qa-card">
+                <h3 class="terminal-text">Functional Testing</h3>
+                <p>Ensuring all features work as intended across different scenarios and user interactions.</p>
+                <div class="tech-stack-display" style="margin-top: 15px;">
+                    <span class="tech-chip">Unit Tests</span>
+                    <span class="tech-chip">Integration</span>
+                </div>
+            </div>
+            
+            <div class="qa-card">
+                <h3 class="terminal-text">Performance Testing</h3>
+                <p>Optimizing load times, server response, and overall website speed for better user experience.</p>
+                <div class="tech-stack-display" style="margin-top: 15px;">
+                    <span class="tech-chip">Lighthouse</span>
+                    <span class="tech-chip">GTmetrix</span>
+                </div>
+            </div>
+            
+            <div class="qa-card">
+                <h3 class="terminal-text">Security Testing</h3>
+                <p>Identifying and fixing vulnerabilities to protect against potential threats and attacks.</p>
+                <div class="tech-stack-display" style="margin-top: 15px;">
+                    <span class="tech-chip">SSL/TLS</span>
+                    <span class="tech-chip">OWASP</span>
+                </div>
+            </div>
+            
+            <div class="qa-card">
+                <h3 class="terminal-text">Cross-browser Testing</h3>
+                <p>Ensuring consistent appearance and functionality across all major web browsers.</p>
+                <div class="tech-stack-display" style="margin-top: 15px;">
+                    <span class="tech-chip">Chrome</span>
+                    <span class="tech-chip">Firefox</span>
+                    <span class="tech-chip">Safari</span>
+                </div>
+            </div>
+            
+            <div class="qa-card">
+                <h3 class="terminal-text">Mobile Responsiveness</h3>
+                <p>Testing on various devices and screen sizes to guarantee optimal mobile experience.</p>
+                <div class="tech-stack-display" style="margin-top: 15px;">
+                    <span class="tech-chip">iOS</span>
+                    <span class="tech-chip">Android</span>
+                    <span class="tech-chip">Tablets</span>
+                </div>
+            </div>
+            
+            <div class="qa-card">
+                <h3 class="terminal-text">User Acceptance Testing</h3>
+                <p>Final testing phase with client participation to ensure all requirements are met.</p>
+                <div class="tech-stack-display" style="margin-top: 15px;">
+                    <span class="tech-chip">Client Review</span>
+                    <span class="tech-chip">Feedback</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 class="terminal-text">Global Website Studio</h3>
+                    <p>// Turning ideas into digital reality</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-codepen"></i></a>
+                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 class="terminal-text">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="terminal-text">Development Process</h3>
+                    <ul>
+                        <li>Discovery & Strategy</li>
+                        <li>Planning & Design</li>
+                        <li>Development</li>
+                        <li>Testing & QA</li>
+                        <li>Launch & Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="terminal-text">© 2023 Global Website Studio | Building with precision, launching with confidence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create binary rain
+            function createBinaryRain() {
+                const container = document.getElementById('binaryRain');
+                const digits = '01';
+                
+                for(let i = 0; i < 50; i++) {
+                    const digit = document.createElement('div');
+                    digit.className = 'binary-digit';
+                    digit.textContent = digits[Math.floor(Math.random() * digits.length)];
+                    digit.style.left = Math.random() * 100 + 'vw';
+                    digit.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    digit.style.animationDelay = Math.random() * 5 + 's';
+                    container.appendChild(digit);
+                }
+            }
+            
+            createBinaryRain();
+            
+            // Animate timeline items on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(50px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+            
+            // Tool item animations
+            const toolItems = document.querySelectorAll('.tool-item');
+            toolItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
