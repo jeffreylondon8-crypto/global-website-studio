@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Global Website Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Services Page Specific Styles */
+        .services-hero {
+            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
+                        url('https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .service-category {
+            background: rgba(0, 30, 40, 0.7);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--neon));
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .service-card {
+            background: rgba(0, 20, 30, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin: 5px;
+            font-size: 0.9rem;
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .pricing {
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid var(--matrix);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px auto;
+            max-width: 1000px;
+            text-align: center;
+        }
+        
+        .price-card {
+            background: rgba(0, 30, 50, 0.6);
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .price-card.featured {
+            border-color: var(--neon);
+            transform: scale(1.05);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: rgba(0, 40, 60, 0.6);
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Binary Rain Effect -->
+    <div class="binary-rain" id="binaryRain"></div>
+    <div class="cyber-grid"></div>
+    
+    <!-- Header -->
+    <header class="neon-border">
+        <div class="container header-container">
+            <a href="index.html" class="logo terminal-text">Global<span class="matrix-text">Website</span>Studio</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-terminal"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <h1 class="glitch" data-text="DIGITAL SOLUTIONS">DIGITAL SOLUTIONS</h1>
+            <p class="terminal-text">// Comprehensive web development services for the modern business</p>
+        </div>
+    </section>
+
+    <!-- Web Development Services -->
+    <section class="container">
+        <div class="service-category">
+            <h2 class="terminal-text">> Web Development</h2>
+            <p>Building responsive, high-performance websites using modern technologies and best practices.</p>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Website Development</h3>
+                    <p>Tailored websites built from scratch to match your brand identity and business requirements.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">React</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Online stores with secure payment gateways, inventory management, and customer analytics.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tech-badge">WooCommerce</span>
+                        <span class="tech-badge">Shopify</span>
+                        <span class="tech-badge">Stripe</span>
+                        <span class="tech-badge">PayPal</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-First Design</h3>
+                    <p>Websites optimized for mobile devices with touch-friendly interfaces and fast loading times.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tech-badge">Responsive</span>
+                        <span class="tech-badge">PWA</span>
+                        <span class="tech-badge">AMP</span>
+                        <span class="tech-badge">Touch UI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Design Services -->
+        <div class="service-category">
+            <h2 class="terminal-text">> Design & UX</h2>
+            <p>Creating beautiful, user-friendly interfaces that provide exceptional user experiences.</p>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>User interface and experience design focused on usability, accessibility, and aesthetics.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tech-badge">Figma</span>
+                        <span class="tech-badge">Adobe XD</span>
+                        <span class="tech-badge">Sketch</span>
+                        <span class="tech-badge">Wireframing</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Brand Identity</h3>
+                    <p>Complete brand development including logos, color schemes, typography, and brand guidelines.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tech-badge">Logo Design</span>
+                        <span class="tech-badge">Brand Guide</span>
+                        <span class="tech-badge">Typography</span>
+                        <span class="tech-badge">Color Theory</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Conversion Optimization</h3>
+                    <p>Improving website elements to increase conversions and achieve business objectives.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tech-badge">A/B Testing</span>
+                        <span class="tech-badge">Heatmaps</span>
+                        <span class="tech-badge">Analytics</span>
+                        <span class="tech-badge">User Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="container">
+        <div class="pricing">
+            <h2 class="glitch" data-text="PRICING PLANS">PRICING PLANS</h2>
+            <p class="terminal-text">// Transparent pricing for all project sizes</p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 40px;">
+                <div class="price-card">
+                    <h3>Basic Website</h3>
+                    <div class="price">R2,500+</div>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li>✓ Up to 5 pages</li>
+                        <li>✓ Responsive design</li>
+                        <li>✓ Contact form</li>
+                        <li>✓ Basic SEO</li>
+                        <li>✓ 1 month support</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
+                </div>
+                
+                <div class="price-card featured">
+                    <h3>Business Website</h3>
+                    <div class="price">R5,000+</div>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li>✓ Up to 10 pages</li>
+                        <li>✓ Custom design</li>
+                        <li>✓ CMS integration</li>
+                        <li>✓ Advanced SEO</li>
+                        <li>✓ 3 months support</li>
+                        <li>✓ Analytics setup</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
+                </div>
+                
+                <div class="price-card">
+                    <h3>E-commerce Store</h3>
+                    <div class="price">R8,000+</div>
+                    <ul style="text-align: left; margin: 20px 0;">
+                        <li>✓ Product catalog</li>
+                        <li>✓ Payment gateway</li>
+                        <li>✓ Inventory management</li>
+                        <li>✓ Customer accounts</li>
+                        <li>✓ 6 months support</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 class="terminal-text">Global Website Studio</h3>
+                    <p>// Turning ideas into digital reality</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-codepen"></i></a>
+                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 class="terminal-text">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="terminal-text">Our Services</h3>
+                    <ul>
+                        <li>Web Development</li>
+                        <li>E-commerce Solutions</li>
+                        <li>UI/UX Design</li>
+                        <li>SEO & Marketing</li>
+                        <li>Website Maintenance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="terminal-text">© 2023 Global Website Studio | Code. Create. Conquer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create binary rain
+            function createBinaryRain() {
+                const container = document.getElementById('binaryRain');
+                const digits = '01';
+                
+                for(let i = 0; i < 50; i++) {
+                    const digit = document.createElement('div');
+                    digit.className = 'binary-digit';
+                    digit.textContent = digits[Math.floor(Math.random() * digits.length)];
+                    digit.style.left = Math.random() * 100 + 'vw';
+                    digit.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    digit.style.animationDelay = Math.random() * 5 + 's';
+                    container.appendChild(digit);
+                }
+            }
+            
+            createBinaryRain();
+            
+            // Service card animations
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
