@@ -3,218 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Global Website Studio</title>
+    <title>Contact Us | Globe Webs Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* Contact Page Specific Styles */
-        .contact-hero {
-            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
-                        url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1600&q=80');
+        :root {
+            --primary-blue: #0066cc;
+            --dark-blue: #004c99;
+            --light-blue: #e6f2ff;
+            --gray: #4a5568;
+            --light-gray: #f7fafc;
+            --dark-gray: #2d3748;
+            --black: #1a202c;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--gray);
+            background-color: var(--light-gray);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 50%;
+            position: relative;
+            margin-right: 10px;
+        }
+        
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+        }
+        
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 15px;
+            background-color: var(--white);
+            border-radius: 50%;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .logo-text span {
+            color: var(--primary-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-gray);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1225&q=80');
             background-size: cover;
             background-position: center;
-            padding: 150px 0 100px;
+            color: var(--white);
+            padding: 100px 0;
             text-align: center;
-            position: relative;
         }
         
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #e2e8f0;
+        }
+        
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        /* Contact Container */
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 50px;
-            margin: 50px auto;
-            max-width: 1200px;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .contact-container {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
         }
         
-        .contact-form-container {
-            background: rgba(0, 20, 40, 0.8);
-            border: 2px solid var(--primary);
-            border-radius: 15px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
+        /* Contact Information */
+        .contact-info {
+            flex: 1;
         }
         
-        .contact-form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--neon), var(--matrix));
-            animation: rgb-flow 3s linear infinite;
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--black);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary-blue);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--black);
+        }
+        
+        /* Quick Contact Buttons */
+        .quick-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn.call {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .contact-btn.call:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .contact-btn.email {
+            background-color: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        .contact-btn.email:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         .form-group {
             margin-bottom: 25px;
         }
         
-        .form-label {
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: var(--primary);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark-gray);
         }
         
-        .form-input {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 15px;
-            background: rgba(0, 30, 50, 0.6);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 8px;
-            color: var(--light);
-            font-family: 'Segoe UI', sans-serif;
-            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
         
-        .form-input:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+            border-color: var(--primary-blue);
         }
         
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .contact-info-container {
-            background: rgba(0, 30, 40, 0.7);
-            border: 2px solid var(--matrix);
-            border-radius: 15px;
-            padding: 40px;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            color: var(--primary);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-details h3 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .contact-link {
-            color: var(--light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .contact-link:hover {
-            color: var(--primary);
-        }
-        
-        .social-contact {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .social-contact-btn {
-            flex: 1;
-            min-width: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        
-        .social-contact-btn.whatsapp {
-            background: rgba(37, 211, 102, 0.1);
-            border-color: #25D366;
-            color: #25D366;
-        }
-        
-        .social-contact-btn.email {
-            background: rgba(234, 67, 53, 0.1);
-            border-color: #EA4335;
-            color: #EA4335;
-        }
-        
-        .social-contact-btn.call {
-            background: rgba(66, 133, 244, 0.1);
-            border-color: #4285F4;
-            color: #4285F4;
-        }
-        
-        .social-contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
+        /* Map Section */
         .map-section {
-            margin: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            background-color: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
         
         .map-placeholder {
-            height: 400px;
-            background: rgba(0, 30, 50, 0.6);
-            border: 2px solid var(--primary);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
         
-        .map-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(0, 212, 255, 0.1) 50%, 
-                transparent 100%);
-            animation: scan 4s linear infinite;
+        .map-placeholder i {
+            font-size: 60px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
         }
         
+        /* FAQ Section */
         .faq-section {
-            margin: 80px 0;
+            background-color: var(--light-gray);
         }
         
         .faq-item {
-            background: rgba(0, 20, 40, 0.6);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 10px;
+            background-color: var(--white);
+            border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
         .faq-question {
@@ -223,11 +387,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question:hover {
-            background: rgba(0, 212, 255, 0.1);
+            font-weight: 600;
+            color: var(--black);
         }
         
         .faq-answer {
@@ -242,229 +403,400 @@
             max-height: 500px;
         }
         
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
+        /* Business Hours */
+        .hours-section {
+            background-color: var(--white);
         }
         
-        .faq-toggle {
-            transition: transform 0.3s ease;
-            color: var(--primary);
+        .hours-table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-table td {
+            padding: 15px 0;
+        }
+        
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--black);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-logo span {
+            color: var(--primary-blue);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Binary Rain Effect -->
-    <div class="binary-rain" id="binaryRain"></div>
-    <div class="cyber-grid"></div>
-    
     <!-- Header -->
-    <header class="neon-border">
+    <header>
         <div class="container header-container">
-            <a href="index.html" class="logo terminal-text">Global<span class="matrix-text">Website</span>Studio</a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-terminal"></i>
-            </button>
-          
-                <ul>
-                   <nav>
-    <a href="index.html">Home</a>
-    |
-    <a href="about.html">About</a>
-    |
-    <a href="services.html">Services</a>
-    |
-    <a href="contact.html">Contact</a>
-</nav>
-                </ul>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">Globe<span>Webs</span>Studio</div>
+            </a>
             
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Contact Hero -->
-    <section class="contact-hero">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h1 class="glitch" data-text="GET IN TOUCH">GET IN TOUCH</h1>
-            <p class="terminal-text">// Ready to start your next project? Let's connect and create something amazing.</p>
+            <h1>Get In <span class="highlight">Touch</span> With Us</h1>
+            <p>Ready to start your project? Contact us today for a free consultation. We're here to help you build the perfect digital solution for your business.</p>
+            <a href="tel:+27640034131" class="btn"><i class="fas fa-phone-alt"></i> Call Now: 064 003 4131</a>
         </div>
     </section>
 
-    <!-- Contact Form & Info -->
-    <section class="container">
-        <div class="contact-container">
-            <!-- Contact Form -->
-            <div class="contact-form-container">
-                <h2 class="terminal-text">> Send a Message</h2>
-                <p>Fill out the form below and I'll get back to you within 24 hours.</p>
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to us through any of the following channels. We typically respond within 24 hours.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone Number</h4>
+                            <p><a href="tel:+27640034131" style="color: var(--primary-blue); text-decoration: none;">064 003 4131</a></p>
+                            <p>Available Monday to Friday, 8am - 6pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Address</h4>
+                            <p><a href="mailto:info@globewebsstudio.com" style="color: var(--primary-blue); text-decoration: none;">info@globewebsstudio.com</a></p>
+                            <p>Send us your project details and we'll get back to you</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Serving clients locally and globally</p>
+                            <p>Remote consultations available worldwide</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/27640034131" style="color: var(--primary-blue); text-decoration: none;">+27 64 003 4131</a></p>
+                            <p>Quick responses for urgent inquiries</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Contact Buttons -->
+                    <div class="quick-contact">
+                        <a href="tel:+27640034131" class="contact-btn call">
+                            <i class="fas fa-phone-alt"></i>
+                            Call Now
+                        </a>
+                        <a href="mailto:info@globewebsstudio.com?subject=Website Project Inquiry" class="contact-btn email">
+                            <i class="fas fa-envelope"></i>
+                            Send Email
+                        </a>
+                    </div>
+                </div>
                 
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label class="form-label">// your_name</label>
-                        <input type="text" class="form-input" placeholder="Enter your name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">// your_email</label>
-                        <input type="email" class="form-input" placeholder="Enter your email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">// project_type</label>
-                        <select class="form-input" required>
-                            <option value="">Select project type</option>
-                            <option value="website">Website Development</option>
-                            <option value="ecommerce">E-commerce Store</option>
-                            <option value="design">UI/UX Design</option>
-                            <option value="branding">Brand Identity</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">// your_message</label>
-                        <textarea class="form-input form-textarea" placeholder="Tell me about your project..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 30px;">Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Your Phone Number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service">
+                                <option value="">Select a service</option>
+                                <option value="web-development">Custom Web Development</option>
+                                <option value="ecommerce">E-Commerce Solutions</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="hosting">Web Hosting & Maintenance</option>
+                                <option value="consulting">IT Support & Consulting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" rows="6" placeholder="Tell us about your project, timeline, and budget..." required></textarea>
+                        </div>
+                        
                         <button type="submit" class="btn" style="width: 100%;">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- Contact Information -->
-            <div class="contact-info-container">
-                <h2 class="terminal-text">> Contact Information</h2>
-                <p>Prefer to reach out directly? Here are all the ways you can contact me.</p>
-                
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Phone</h3>
-                        <p><a href="tel:+27640034131" class="contact-link">+27 64 003 4131</a></p>
-                        <p>Available Monday to Friday, 9 AM - 6 PM SAST</p>
-                    </div>
-                </div>
-                
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Email</h3>
-                        <p><a href="mailto:globewebsstudio@gmail.com" class="contact-link">globewebsstudio@gmail.com</a></p>
-                        <p>Typically respond within 24 hours</p>
-                    </div>
-                </div>
-                
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Location</h3>
-                        <p>Serving clients worldwide</p>
-                        <p>Based in South Africa, working across time zones</p>
-                    </div>
-                </div>
-                
-                <div class="contact-method">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>Business Hours</h3>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM SAST</p>
-                        <p>Saturday: 10:00 AM - 2:00 PM SAST</p>
-                        <p>Sunday: Available for emergencies</p>
-                    </div>
-                </div>
-                
-                <!-- Quick Contact Buttons -->
-                <div class="social-contact">
-                    <a href="https://wa.me/27640034131" class="social-contact-btn whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </a>
-                    <a href="mailto:globewebsstudio@gmail.com" class="social-contact-btn email">
-                        <i class="fas fa-envelope"></i>
-                        Email
-                    </a>
-                    <a href="tel:+27640034131" class="social-contact-btn call">
-                        <i class="fas fa-phone-alt"></i>
-                        Call
-                    </a>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Map Section -->
-    <section class="container map-section">
-        <h2 class="terminal-text" style="text-align: center; margin-bottom: 30px;">> Global Reach</h2>
-        <div class="map-placeholder">
-            <div style="text-align: center; z-index: 2;">
-                <i class="fas fa-globe-africa" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
-                <h3 class="terminal-text">Serving Clients Worldwide</h3>
-                <p>Remote-first approach allows me to work with clients globally</p>
+    <section class="section map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Global Reach</h2>
+                <p>Serving clients locally and internationally</p>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-globe-africa"></i>
+                    <h3>Remote Services Available Worldwide</h3>
+                    <p>We work with clients across different time zones using modern collaboration tools</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="section hours-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Business Hours</h2>
+                <p>Our availability for calls, meetings, and support</p>
+            </div>
+            
+            <table class="hours-table">
+                <tr>
+                    <td>Monday - Friday</td>
+                    <td>8:00 AM - 6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>9:00 AM - 1:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>By Appointment Only</td>
+                </tr>
+                <tr>
+                    <td>Emergency Support</td>
+                    <td>24/7 for existing clients</td>
+                </tr>
+            </table>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p><i>Outside of business hours? Send us an email and we'll respond as soon as possible.</i></p>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="container faq-section">
-        <h2 class="terminal-text" style="text-align: center; margin-bottom: 50px;">> Frequently Asked Questions</h2>
-        
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How long does a typical website project take?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Timelines vary based on project complexity. A basic website typically takes 2-3 weeks, while larger e-commerce projects can take 4-8 weeks. I provide detailed timelines during our initial consultation.</p>
-                </div>
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact FAQs</h2>
+                <p>Answers to common questions about contacting us</p>
             </div>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>What is your payment structure?</h3>
-                    <span class="faq-toggle">+</span>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How quickly do you respond to inquiries?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically respond to emails within 24 hours and phone calls during business hours. For urgent matters, WhatsApp messages often receive the fastest response.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>I require a 50% deposit to begin work, with the remaining 50% due upon project completion. For larger projects, I offer milestone-based payments.</p>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer free consultations?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a free 30-minute consultation to discuss your project, understand your needs, and provide initial recommendations. There's no obligation to proceed after the consultation.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Do you provide ongoing maintenance?</h3>
-                    <span class="faq-toggle">+</span>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What information should I provide when contacting you?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>When reaching out, it's helpful to include: your business name, type of project, desired timeline, and budget range if you have one. The more details you provide, the better we can assist you.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Yes! I offer monthly maintenance plans that include updates, security monitoring, backups, and technical support. These start at R500/month.</p>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you work with clients outside South Africa?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We work with clients worldwide. We're experienced in remote collaboration and can accommodate different time zones and currencies.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>What technologies do you work with?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>HTML5, CSS3, JavaScript (React, Vue), Node.js, Python, various CMS platforms (WordPress, Shopify), and database systems. I choose the best technology stack for each specific project.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Can I update my website myself?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely! I provide training and documentation so you can manage content yourself. For more complex updates, I'm available for support.</p>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is your typical project timeline?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Timelines vary based on project complexity. Simple websites can take 2-3 weeks, while complex e-commerce sites may take 4-8 weeks. We provide detailed timelines during our consultation.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -473,105 +805,124 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-container">
+            <div class="footer-content">
                 <div class="footer-column">
-                    <h3 class="terminal-text">Global Website Studio</h3>
-                    <p>// Turning ideas into digital reality</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-codepen"></i></a>
-                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                    <div class="footer-logo">Globe<span>Webs</span>Studio</div>
+                    <p>Professional web development and IT solutions for local and global businesses. We build digital experiences that drive growth and success.</p>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
+                
                 <div class="footer-column">
-                    <h3 class="terminal-text">Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="process.html">Process</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="index.html" style="color: #a0aec0; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="services.html" style="color: #a0aec0; text-decoration: none;">Services</a></li>
+                        <li style="margin-bottom: 10px;"><a href="about.html" style="color: #a0aec0; text-decoration: none;">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="contact.html" style="color: #a0aec0; text-decoration: none;">Contact</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
-                    <h3 class="terminal-text">Contact Details</h3>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +27 64 003 4131</li>
-                        <li><i class="fas fa-envelope"></i> globewebsstudio@gmail.com</li>
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp Available</li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM SAST</li>
+                    <h3>Contact Details</h3>
+                    <ul style="list-style: none; color: #a0aec0;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-phone"></i> 064 003 4131</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> info@globewebsstudio.com</li>
+                        <li style="margin-bottom: 10px;"><i class="fab fa-whatsapp"></i> WhatsApp Available</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-clock"></i> Mon-Fri: 8am-6pm</li>
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
-                <p class="terminal-text">© 2023 Global Website Studio | Let's build something amazing together</p>
+                <p>&copy; 2023 Globe Webs Studio. All rights reserved. | Created by Junior</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create binary rain
-            function createBinaryRain() {
-                const container = document.getElementById('binaryRain');
-                const digits = '01';
-                
-                for(let i = 0; i < 50; i++) {
-                    const digit = document.createElement('div');
-                    digit.className = 'binary-digit';
-                    digit.textContent = digits[Math.floor(Math.random() * digits.length)];
-                    digit.style.left = Math.random() * 100 + 'vw';
-                    digit.style.animationDuration = (Math.random() * 10 + 5) + 's';
-                    digit.style.animationDelay = Math.random() * 5 + 's';
-                    container.appendChild(digit);
-                }
-            }
-            
-            createBinaryRain();
-            
-            // FAQ Toggle
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const faqItem = this.parentElement;
-                    faqItem.classList.toggle('active');
-                });
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
-            
-            // Contact Form Submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form data
-                    const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Show success message
-                    alert('Message sent successfully! I\'ll get back to you within 24 hours.');
-                    
-                    // Reset form
-                    this.reset();
-                    
-                    // In a real application, you would send this data to a server
-                    console.log('Form submitted:', data);
-                });
-            }
-            
-            // Add animation to contact buttons
-            const contactButtons = document.querySelectorAll('.social-contact-btn');
-            contactButtons.forEach(btn => {
-                btn.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px)';
-                });
+        });
+        
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
                 
-                btn.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
+                // Toggle plus/minus icon
+                const icon = question.querySelector('span');
+                icon.textContent = faqItem.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Show success message
+            alert(`Thank you ${name}! We have received your message about ${service}. We will contact you at ${email} or ${phone} within 24 hours.`);
+            
+            // Reset the form
+            contactForm.reset();
+            
+            // In a real application, you would send this data to a server
+            console.log('Contact form submitted:', { name, email, phone, service, message });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
