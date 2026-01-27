@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Website Studio | International Website Solutions</title>
+    <title>Globe Webs Studio | Professional Web Development</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
+        :root {
+            --primary-blue: #0066cc;
+            --dark-blue: #004c99;
+            --light-blue: #e6f2ff;
+            --gray: #4a5568;
+            --light-gray: #f7fafc;
+            --dark-gray: #2d3748;
+            --black: #1a202c;
+            --white: #ffffff;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -15,143 +24,24 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --gray: #64748b;
-        }
-        
         body {
             line-height: 1.6;
-            color: var(--dark);
-            background-color: #ffffff;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
+            color: var(--gray);
+            background-color: var(--light-gray);
         }
         
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .contact-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: white;
-            color: var(--primary);
-            padding: 14px 28px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid white;
-        }
-        
-        .contact-btn:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .contact-btn.call {
-            background-color: #10b981;
-            color: white;
-        }
-        
-        .contact-btn.email {
-            background-color: #ef4444;
-            color: white;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark);
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-            color: var(--dark);
-        }
-        
-        p {
-            margin-bottom: 1.5rem;
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-        
-        .highlight {
-            color: var(--primary);
-        }
-        
         /* Header & Navigation */
         header {
-            background-color: white;
+            background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
@@ -164,13 +54,52 @@
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
         
-        .logo span {
-            color: var(--dark);
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 50%;
+            position: relative;
+            margin-right: 10px;
+        }
+        
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+        }
+        
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 15px;
+            background-color: var(--white);
+            border-radius: 50%;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .logo-text span {
+            color: var(--primary-blue);
         }
         
         nav ul {
@@ -179,66 +108,109 @@
         }
         
         nav ul li {
-            margin-left: 2rem;
+            margin-left: 30px;
         }
         
         nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
             font-weight: 600;
-            transition: color 0.3s ease;
+            font-size: 16px;
+            transition: color 0.3s;
         }
         
         nav ul li a:hover {
-            color: var(--primary);
+            color: var(--primary-blue);
         }
         
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
             background: none;
             border: none;
-            color: var(--dark);
+            font-size: 24px;
+            color: var(--dark-gray);
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 150px 0 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
             text-align: center;
         }
         
         .hero h1 {
-            margin-bottom: 1.5rem;
+            font-size: 48px;
+            margin-bottom: 20px;
         }
         
         .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--gray);
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #e2e8f0;
         }
         
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 2rem;
+        .highlight {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-blue);
         }
         
         /* Services Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--black);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 2rem;
         }
         
         .service-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 40px 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
         }
         
@@ -248,314 +220,322 @@
         }
         
         .service-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Process Section */
-        .process-section {
-            background-color: #f8fafc;
-        }
-        
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 3rem;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-blue);
             border-radius: 50%;
-            line-height: 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-blue);
+            font-size: 30px;
         }
         
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--black);
         }
         
-        .cta h2, .cta p {
-            color: white;
+        /* About Section */
+        .about {
+            background-color: var(--white);
         }
         
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .creator-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
         }
         
         /* Contact Section */
-        .contact-section {
-            background-color: var(--light);
+        .contact {
+            background-color: var(--light-gray);
         }
         
         .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
             gap: 50px;
-            margin-top: 2rem;
         }
         
         .contact-info {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--black);
         }
         
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
+            align-items: center;
+            margin-bottom: 20px;
         }
         
         .contact-icon {
             width: 50px;
             height: 50px;
-            background-color: rgba(37, 99, 235, 0.1);
+            background-color: var(--light-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 15px;
-            color: var(--primary);
-            font-size: 1.2rem;
+            color: var(--primary-blue);
+            font-size: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark);
-            color: white;
+            background-color: var(--black);
+            color: var(--white);
             padding: 60px 0 30px;
         }
         
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 40px;
             margin-bottom: 40px;
         }
         
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
         .footer-column h3 {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--white);
         }
         
-        .footer-column p {
-            color: #cbd5e1;
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
         }
         
-        .footer-column ul {
-            list-style: none;
+        .footer-logo span {
+            color: var(--primary-blue);
         }
         
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--accent);
-        }
-        
-        .social-links {
+        .social-icons {
             display: flex;
             gap: 15px;
-            margin-top: 1.5rem;
+            margin-top: 20px;
         }
         
-        .social-links a {
-            display: inline-block;
+        .social-icon {
             width: 40px;
             height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
         }
         
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
+        .social-icon:hover {
+            background-color: var(--primary-blue);
         }
         
         .copyright {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e1;
-            font-size: 0.9rem;
+            color: #a0aec0;
+            font-size: 14px;
         }
         
         /* Responsive Design */
         @media (max-width: 992px) {
-            h1 {
-                font-size: 2.8rem;
+            .about-content {
+                flex-direction: column;
             }
             
-            h2 {
-                font-size: 2.2rem;
+            .contact-container {
+                flex-direction: column;
             }
         }
         
         @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
             
-            nav ul {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                flex-direction: column;
-                background-color: white;
-                text-align: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                transition: left 0.3s ease;
+            .hero h1 {
+                font-size: 36px;
             }
             
-            nav ul.active {
-                left: 0;
-            }
-            
-            nav ul li {
-                margin: 15px 0;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .hero-btns .btn {
-                width: 100%;
-                max-width: 300px;
-                margin-bottom: 15px;
-            }
-            
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .contact-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .hero {
-                padding: 120px 0 80px;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">Global<span>Website</span>Studio</a>
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">Globe<span>Webs</span>Studio</div>
+            </a>
             
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
             
-            
-                <ul>
-                     <nav>
-    <a href="index.html">Home</a>
-    |
-    <a href="about.html">About</a>
-    |
-    <a href="services.html">Services</a>
-    |
-    <a href="contact.html">Contact</a>
-</nav>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-           
+            </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Helping International Businesses <span class="highlight">Build Websites</span></h1>
-            <p>We create professional, user-friendly websites for businesses around the world. If your company doesn't have an online presence yet, we'll help you establish one that works globally.</p>
-            <div class="hero-btns">
-                <a href="tel:+27640034131" class="btn"><i class="fas fa-phone-alt"></i> Call Now</a>
-                <a href="mailto:globewebsstudio@gmail.com?subject=Website Inquiry&body=Hi, I'm interested in your website services" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Us</a>
-            </div>
+            <h1>Building Digital Solutions for <span class="highlight">Local & Global</span> Businesses</h1>
+            <p>Globe Webs Studio specializes in creating professional, responsive websites and IT solutions that help businesses establish a strong online presence and reach customers worldwide.</p>
+            <a href="#contact" class="btn">Get Your Free Consultation</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section class="section" id="services">
         <div class="container">
-            <h2>What I Offer</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">I provide comprehensive website solutions tailored to the unique needs of international businesses looking to establish or improve their online presence.</p>
+            <div class="section-title">
+                <h2>Our IT Services</h2>
+                <p>We offer a comprehensive range of web development and IT solutions tailored to your business needs.</p>
+            </div>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-globe"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Global Website Design</h3>
-                    <p>Creating websites that work seamlessly across different cultures, languages, and regions to help your business reach international audiences.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile-First Design</h3>
-                    <p>All websites are designed to look great and function perfectly on smartphones and tablets, where most of your customers will be browsing.</p>
+                    <h3>Custom Web Development</h3>
+                    <p>We build responsive, user-friendly websites with modern technologies that work seamlessly across all devices.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h3>E-commerce Solutions</h3>
-                    <p>Build online stores with secure payment processing, inventory management, and shipping solutions for global e-commerce.</p>
+                    <h3>E-Commerce Solutions</h3>
+                    <p>Create online stores with secure payment gateways, inventory management, and customer-friendly interfaces.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Responsive Design</h3>
+                    <p>Ensure your website looks perfect and functions flawlessly on smartphones, tablets, and desktops.</p>
                 </div>
                 
                 <div class="service-card">
@@ -563,102 +543,69 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <h3>SEO Optimization</h3>
-                    <p>Optimizing your website to rank higher in search engines so international customers can find your business easily.</p>
+                    <p>Improve your website's visibility on search engines to attract more organic traffic and potential customers.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-language"></i>
+                        <i class="fas fa-server"></i>
                     </div>
-                    <h3>Multilingual Support</h3>
-                    <p>Implementing language translation options to ensure your website communicates effectively with customers worldwide.</p>
+                    <h3>Web Hosting & Maintenance</h3>
+                    <p>Reliable hosting solutions and ongoing maintenance to keep your website secure and up-to-date.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Maintenance & Support</h3>
-                    <p>Ongoing website maintenance, updates, and technical support to keep your site running smoothly 24/7.</p>
+                    <h3>IT Support & Consulting</h3>
+                    <p>Professional IT consulting and support services to help your business leverage technology effectively.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="process-section" id="process">
+    <!-- About Section -->
+    <section class="section about" id="about">
         <div class="container">
-            <h2>How I Create Websites</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">My proven 5-step process ensures your website meets your business goals and provides an excellent experience for your international customers.</p>
-            
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Discovery & Strategy</h3>
-                    <p>I begin by understanding your business, target audience, and goals. We'll discuss your brand, services, and what makes your business unique.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Globe Webs Studio</h2>
+                    <p>Founded by Junior, Globe Webs Studio is a dynamic web development agency with a passion for creating digital solutions that drive business growth. We combine technical expertise with creative design to deliver websites that not only look great but also perform exceptionally.</p>
+                    <p>Our team specializes in working with both local businesses looking to establish an online presence and global companies seeking to expand their digital footprint. We understand the unique challenges and opportunities of the modern digital landscape.</p>
+                    
+                    <div class="creator-info">
+                        <h3>Meet the Founder</h3>
+                        <p><strong>Junior</strong> is an experienced IT professional with a vision to help businesses succeed in the digital world. With expertise in web technologies and a passion for innovation, Junior leads our team in delivering exceptional results for every client.</p>
+                    </div>
                 </div>
                 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Planning & Design</h3>
-                    <p>I create a sitemap and design mockups for your approval. This includes layout, color schemes, typography, and user experience planning.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Development</h3>
-                    <p>Using modern web technologies, I build a responsive, fast-loading website that works perfectly on all devices and browsers.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Content & Testing</h3>
-                    <p>I help you prepare content and test the website thoroughly for functionality, performance, and compatibility across different regions.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <h3>Launch & Support</h3>
-                    <p>After your approval, I launch your website and provide training on how to manage it. Ongoing support ensures everything runs smoothly.</p>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Our Team at Globe Webs Studio">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section" id="contact">
+    <section class="section contact" id="contact">
         <div class="container">
-            <h2>Start Your Project Today</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Ready to establish your global online presence? Contact me directly using any of the methods below to discuss your website needs.</p>
-            
-            <div class="contact-buttons">
-                <a href="tel:+27640034131" class="contact-btn call">
-                    <i class="fas fa-phone-alt"></i>
-                    Call Now: +27 64 003 4131
-                </a>
-                <a href="mailto:globewebsstudio@gmail.com?subject=Website Project Inquiry&body=Hello Global Website Studio, I'm interested in your website services. Please contact me to discuss my project." class="contact-btn email">
-                    <i class="fas fa-envelope"></i>
-                    Email: globewebsstudio@gmail.com
-                </a>
-                <a href="https://wa.me/27640034131?text=Hi%20Global%20Website%20Studio,%20I'm%20interested%20in%20your%20website%20services" class="contact-btn" style="background-color: #25D366;">
-                    <i class="fab fa-whatsapp"></i>
-                    WhatsApp Message
-                </a>
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us to discuss your project and discover how we can help your business grow online.</p>
             </div>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>Get in touch with me directly to discuss your website project.</p>
+                    <h3>Get in Touch</h3>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div>
-                            <h4>Phone Number</h4>
-                            <p><a href="tel:+27640034131">+27 64 003 4131</a></p>
-                            <p>Available Monday to Friday, 9 AM - 6 PM SAST</p>
+                            <h4>Phone</h4>
+                            <p>064 003 4131</p>
                         </div>
                     </div>
                     
@@ -667,9 +614,18 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4>Email Address</h4>
-                            <p><a href="mailto:globewebsstudio@gmail.com">globewebsstudio@gmail.com</a></p>
-                            <p>I typically respond within 24 hours</p>
+                            <h4>Email</h4>
+                            <p>info@globewebsstudio.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Based In</h4>
+                            <p>Serving local and global clients remotely</p>
                         </div>
                     </div>
                     
@@ -679,46 +635,49 @@
                         </div>
                         <div>
                             <h4>Business Hours</h4>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            <p>Saturday: 10:00 AM - 2:00 PM</p>
-                            <p>Sunday: Closed</p>
+                            <p>Monday - Friday: 8am - 6pm</p>
+                            <p>Saturday: 9am - 1pm</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="contact-info">
-                    <h3>What Happens Next?</h3>
-                    <p>When you contact me, here's what you can expect:</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-comment-dots"></i>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required>
                         </div>
-                        <div>
-                            <h4>Initial Consultation</h4>
-                            <p>We'll discuss your business needs, target audience, and website goals in a free consultation.</p>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="your.email@example.com" required>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-lightbulb"></i>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Your Phone Number">
                         </div>
-                        <div>
-                            <h4>Custom Proposal</h4>
-                            <p>I'll prepare a detailed proposal outlining the project scope, timeline, and investment.</p>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" style="width: 100%; padding: 12px 15px; border: 1px solid #e2e8f0; border-radius: 5px; font-size: 16px;">
+                                <option value="">Select a service</option>
+                                <option value="web-development">Custom Web Development</option>
+                                <option value="ecommerce">E-Commerce Solutions</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="hosting">Web Hosting & Maintenance</option>
+                                <option value="consulting">IT Support & Consulting</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-calendar-check"></i>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" rows="5" placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <div>
-                            <h4>Project Kickoff</h4>
-                            <p>Once approved, we'll schedule a kickoff meeting and begin working on your website.</p>
-                        </div>
-                    </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -727,67 +686,93 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-container">
+            <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Global Website Studio</h3>
-                    <p>Helping international businesses establish and grow their online presence with professional, user-friendly websites tailored to global audiences.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="footer-logo">Globe<span>Webs</span>Studio</div>
+                    <p>Professional web development and IT solutions for local and global businesses. We build digital experiences that drive growth and success.</p>
+                    
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#process">My Process</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="#home" style="color: #a0aec0; text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#services" style="color: #a0aec0; text-decoration: none;">Services</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#about" style="color: #a0aec0; text-decoration: none;">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#contact" style="color: #a0aec0; text-decoration: none;">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#services">Global Website Design</a></li>
-                        <li><a href="#services">Mobile-First Development</a></li>
-                        <li><a href="#services">E-commerce Solutions</a></li>
-                        <li><a href="#services">SEO Optimization</a></li>
-                        <li><a href="#services">Multilingual Websites</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:globewebsstudio@gmail.com">globewebsstudio@gmail.com</a></li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+27640034131">+27 64 003 4131</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> Serving Clients Worldwide</li>
-                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/27640034131">WhatsApp Available</a></li>
+                    <h3>Our Services</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #a0aec0; text-decoration: none;">Web Development</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #a0aec0; text-decoration: none;">E-Commerce Solutions</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #a0aec0; text-decoration: none;">SEO Optimization</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #a0aec0; text-decoration: none;">IT Consulting</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Global Website Studio. All rights reserved.</p>
+                <p>&copy; 2023 Globe Webs Studio. All rights reserved. | Created by Junior</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
         
         // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelector('nav ul').classList.remove('active');
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you ${name}! We have received your message about ${service}. We will contact you at ${email} or ${phone} shortly.`);
+            
+            // Reset the form
+            contactForm.reset();
         });
         
         // Smooth scrolling for anchor links
@@ -805,16 +790,6 @@
                         behavior: 'smooth'
                     });
                 }
-            });
-        });
-        
-        // Track contact button clicks
-        document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"], a[href*="whatsapp"]').forEach(link => {
-            link.addEventListener('click', function() {
-                const action = this.getAttribute('href').includes('tel:') ? 'call' : 
-                              this.getAttribute('href').includes('mailto:') ? 'email' : 'whatsapp';
-                console.log(`User initiated ${action} action`);
-                // You could add analytics tracking here
             });
         });
     </script>
