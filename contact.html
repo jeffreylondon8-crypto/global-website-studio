@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Global Website Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
+                        url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-form-container {
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--neon), var(--matrix));
+            animation: rgb-flow 3s linear infinite;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 30, 50, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Segoe UI', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info-container {
+            background: rgba(0, 30, 40, 0.7);
+            border: 2px solid var(--matrix);
+            border-radius: 15px;
+            padding: 40px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .contact-link {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary);
+        }
+        
+        .social-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .social-contact-btn {
+            flex: 1;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .social-contact-btn.whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: #25D366;
+            color: #25D366;
+        }
+        
+        .social-contact-btn.email {
+            background: rgba(234, 67, 53, 0.1);
+            border-color: #EA4335;
+            color: #EA4335;
+        }
+        
+        .social-contact-btn.call {
+            background: rgba(66, 133, 244, 0.1);
+            border-color: #4285F4;
+            color: #4285F4;
+        }
+        
+        .social-contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .map-section {
+            margin: 80px 0;
+        }
+        
+        .map-placeholder {
+            height: 400px;
+            background: rgba(0, 30, 50, 0.6);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 212, 255, 0.1) 50%, 
+                transparent 100%);
+            animation: scan 4s linear infinite;
+        }
+        
+        .faq-section {
+            margin: 80px 0;
+        }
+        
+        .faq-item {
+            background: rgba(0, 20, 40, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Binary Rain Effect -->
+    <div class="binary-rain" id="binaryRain"></div>
+    <div class="cyber-grid"></div>
+    
+    <!-- Header -->
+    <header class="neon-border">
+        <div class="container header-container">
+            <a href="index.html" class="logo terminal-text">Global<span class="matrix-text">Website</span>Studio</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-terminal"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="process.html">Process</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="glitch" data-text="GET IN TOUCH">GET IN TOUCH</h1>
+            <p class="terminal-text">// Ready to start your next project? Let's connect and create something amazing.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="container">
+        <div class="contact-container">
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2 class="terminal-text">> Send a Message</h2>
+                <p>Fill out the form below and I'll get back to you within 24 hours.</p>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">// your_name</label>
+                        <input type="text" class="form-input" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">// your_email</label>
+                        <input type="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">// project_type</label>
+                        <select class="form-input" required>
+                            <option value="">Select project type</option>
+                            <option value="website">Website Development</option>
+                            <option value="ecommerce">E-commerce Store</option>
+                            <option value="design">UI/UX Design</option>
+                            <option value="branding">Brand Identity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">// your_message</label>
+                        <textarea class="form-input form-textarea" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info-container">
+                <h2 class="terminal-text">> Contact Information</h2>
+                <p>Prefer to reach out directly? Here are all the ways you can contact me.</p>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+27640034131" class="contact-link">+27 64 003 4131</a></p>
+                        <p>Available Monday to Friday, 9 AM - 6 PM SAST</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p><a href="mailto:globewebsstudio@gmail.com" class="contact-link">globewebsstudio@gmail.com</a></p>
+                        <p>Typically respond within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Location</h3>
+                        <p>Serving clients worldwide</p>
+                        <p>Based in South Africa, working across time zones</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM SAST</p>
+                        <p>Saturday: 10:00 AM - 2:00 PM SAST</p>
+                        <p>Sunday: Available for emergencies</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Contact Buttons -->
+                <div class="social-contact">
+                    <a href="https://wa.me/27640034131" class="social-contact-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="mailto:globewebsstudio@gmail.com" class="social-contact-btn email">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </a>
+                    <a href="tel:+27640034131" class="social-contact-btn call">
+                        <i class="fas fa-phone-alt"></i>
+                        Call
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="container map-section">
+        <h2 class="terminal-text" style="text-align: center; margin-bottom: 30px;">> Global Reach</h2>
+        <div class="map-placeholder">
+            <div style="text-align: center; z-index: 2;">
+                <i class="fas fa-globe-africa" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3 class="terminal-text">Serving Clients Worldwide</h3>
+                <p>Remote-first approach allows me to work with clients globally</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container faq-section">
+        <h2 class="terminal-text" style="text-align: center; margin-bottom: 50px;">> Frequently Asked Questions</h2>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does a typical website project take?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Timelines vary based on project complexity. A basic website typically takes 2-3 weeks, while larger e-commerce projects can take 4-8 weeks. I provide detailed timelines during our initial consultation.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is your payment structure?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>I require a 50% deposit to begin work, with the remaining 50% due upon project completion. For larger projects, I offer milestone-based payments.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you provide ongoing maintenance?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! I offer monthly maintenance plans that include updates, security monitoring, backups, and technical support. These start at R500/month.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What technologies do you work with?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>HTML5, CSS3, JavaScript (React, Vue), Node.js, Python, various CMS platforms (WordPress, Shopify), and database systems. I choose the best technology stack for each specific project.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I update my website myself?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! I provide training and documentation so you can manage content yourself. For more complex updates, I'm available for support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 class="terminal-text">Global Website Studio</h3>
+                    <p>// Turning ideas into digital reality</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-codepen"></i></a>
+                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 class="terminal-text">Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="terminal-text">Contact Details</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +27 64 003 4131</li>
+                        <li><i class="fas fa-envelope"></i> globewebsstudio@gmail.com</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp Available</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM SAST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="terminal-text">© 2023 Global Website Studio | Let's build something amazing together</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create binary rain
+            function createBinaryRain() {
+                const container = document.getElementById('binaryRain');
+                const digits = '01';
+                
+                for(let i = 0; i < 50; i++) {
+                    const digit = document.createElement('div');
+                    digit.className = 'binary-digit';
+                    digit.textContent = digits[Math.floor(Math.random() * digits.length)];
+                    digit.style.left = Math.random() * 100 + 'vw';
+                    digit.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    digit.style.animationDelay = Math.random() * 5 + 's';
+                    container.appendChild(digit);
+                }
+            }
+            
+            createBinaryRain();
+            
+            // FAQ Toggle
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Show success message
+                    alert('Message sent successfully! I\'ll get back to you within 24 hours.');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // In a real application, you would send this data to a server
+                    console.log('Form submitted:', data);
+                });
+            }
+            
+            // Add animation to contact buttons
+            const contactButtons = document.querySelectorAll('.social-contact-btn');
+            contactButtons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
