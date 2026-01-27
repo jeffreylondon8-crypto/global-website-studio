@@ -1,0 +1,207 @@
+/* Geeky Tech Theme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Fira Code', 'Courier New', monospace;
+}
+
+:root {
+    --primary: #00d4ff;
+    --secondary: #0066ff;
+    --accent: #00ff9d;
+    --dark: #0a0a0f;
+    --darker: #050510;
+    --light: #f0f8ff;
+    --neon: #ff00ff;
+    --terminal: #00ff00;
+    --matrix: #00ff41;
+    --cyberpunk: #ff0080;
+}
+
+body {
+    background-color: var(--darker);
+    color: var(--light);
+    line-height: 1.6;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 128, 0.05) 0%, transparent 20%);
+    min-height: 100vh;
+}
+
+/* Terminal-like text effect */
+.terminal-text {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--terminal);
+    text-shadow: 0 0 10px var(--matrix);
+}
+
+/* Cyber Grid Background */
+.cyber-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    animation: glitch-effect 3s infinite linear alternate-reverse;
+    color: var(--neon);
+    z-index: -1;
+}
+
+.glitch::after {
+    animation: glitch-effect 2s infinite linear alternate-reverse;
+    color: var(--cyberpunk);
+    z-index: -2;
+}
+
+@keyframes glitch-effect {
+    0% { clip-path: inset(40% 0 61% 0); transform: translate(-2px, 2px); }
+    5% { clip-path: inset(92% 0 1% 0); transform: translate(1px, -1px); }
+    10% { clip-path: inset(43% 0 1% 0); transform: translate(-1px, 1px); }
+    15% { clip-path: inset(25% 0 58% 0); transform: translate(2px, 2px); }
+    20% { clip-path: inset(54% 0 7% 0); transform: translate(-2px, -2px); }
+    45% { clip-path: inset(58% 0 43% 0); transform: translate(1px, -1px); }
+    50% { clip-path: inset(98% 0 1% 0); transform: translate(-1px, 2px); }
+    55% { clip-path: inset(75% 0 6% 0); transform: translate(2px, 1px); }
+    60% { clip-path: inset(46% 0 45% 0); transform: translate(-2px, -1px); }
+    75% { clip-path: inset(20% 0 60% 0); transform: translate(1px, 2px); }
+    80% { clip-path: inset(50% 0 40% 0); transform: translate(-1px, -2px); }
+    85% { clip-path: inset(90% 0 5% 0); transform: translate(2px, -1px); }
+    90% { clip-path: inset(30% 0 60% 0); transform: translate(-2px, 1px); }
+    95% { clip-path: inset(70% 0 20% 0); transform: translate(1px, -2px); }
+    100% { clip-path: inset(10% 0 80% 0); transform: translate(-1px, 2px); }
+}
+
+/* Binary Rain Effect */
+.binary-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.binary-digit {
+    position: absolute;
+    color: var(--matrix);
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    animation: fall linear infinite;
+    opacity: 0.7;
+    text-shadow: 0 0 5px var(--matrix);
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh); }
+}
+
+/* Neon Borders */
+.neon-border {
+    border: 2px solid var(--primary);
+    box-shadow: 
+        0 0 10px var(--primary),
+        inset 0 0 10px var(--primary);
+    border-radius: 5px;
+    position: relative;
+}
+
+.neon-border::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px solid var(--neon);
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.5;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Matrix Text Effect */
+.matrix-text {
+    background: linear-gradient(90deg, var(--matrix), var(--terminal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: matrix-flow 20s linear infinite;
+    background-size: 200% auto;
+}
+
+@keyframes matrix-flow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Hacker Terminal */
+.hacker-terminal {
+    background-color: rgba(0, 20, 0, 0.9);
+    border: 2px solid var(--matrix);
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Fira Code', monospace;
+    color: var(--terminal);
+    text-shadow: 0 0 5px var(--matrix);
+    position: relative;
+    overflow: hidden;
+}
+
+.hacker-terminal::before {
+    content: '>';
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    color: var(--terminal);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .neon-border::before {
+        display: none;
+    }
+    
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+}
